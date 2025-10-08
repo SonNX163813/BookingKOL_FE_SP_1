@@ -50,3 +50,6 @@ export const update = ({ url, data, config }) => api.put(url, data, config);
 
 // DELETE
 export const remove = ({ url }) => api.delete(url);
+
+// PUT/UPDATE
+export const patch = ({ url, data, config }) => api.patch(url, data, config);
