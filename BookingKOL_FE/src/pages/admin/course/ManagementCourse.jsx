@@ -1,4 +1,4 @@
-import { Search, Trash2, Eye } from "lucide-react";
+import { Search, Trash2, Eye, Plus } from "lucide-react";
 import { Button, Card, Form, Input, Modal, Pagination, Table, Tag, Image, Tooltip } from "antd";
 import { useState } from "react";
 import { useGetAllCourse } from "../../../hook/admin/course/useGetAllCourse";
@@ -14,6 +14,7 @@ const ManagementCourse = () => {
     const [searchMinPrice, setSearchMinPrice] = useState(undefined);
     const [searchMaxPrice, setSearchMaxPrice] = useState(undefined);
     const navigate = useNavigate()
+
     const {
         isLoadingGetAllCourse,
         ResponseGetAllCourse,
@@ -34,6 +35,10 @@ const ManagementCourse = () => {
         setSearchMinPrice(undefined);
         setSearchMaxPrice(undefined);
     };
+
+    const handleCreateCourse = () => {
+        navigate('/admin/create-course')
+    }
 
     const columns = [
         {
@@ -89,21 +94,13 @@ const ManagementCourse = () => {
             key: "action",
             align: "center",
             render: (record) => (
-                <div className="w-full flex justify-center">
-                    <button
-                        onClick={() => navigate(`/view-detail-course/${record.id}`)}
-                        className="
-                        relative flex items-center justify-center gap-2
-                        px-4 py-2.5 rounded-xl
-                        bg-gradient-to-r from-blue-600 to-blue-400
-                        text-white font-medium shadow-md
-                        hover:from-blue-500 hover:to-blue-300
-                        hover:shadow-lg hover:scale-[1.05]
-                        active:scale-[0.97] transition-all duration-300 cursor-pointer
-                        "
+                <div className="flex justify-center">
+                    <Button
+                        onClick={() => navigate(`/admin/view-detail-course/${record.id}`)}
+                        className="!h-10 !bg-blue-600 !text-white !border-none hover:!bg-blue-700 transition-all"
                     >
                         <Eye size={18} className="font-semibold" />
-                    </button>
+                    </Button>
                 </div>
             ),
             width: "15%",
@@ -122,7 +119,7 @@ const ManagementCourse = () => {
                 </section>
             </div>
 
-            <div className='flex gap-3 py-3'>
+            <div className='flex gap-3 py-3 justify-between'>
                 <Form form={form} className='flex gap-3' onFinish={handleSearch}>
                     <Form.Item name='search'>
                         <Input className='h-12!' placeholder='Tìm tên khóa học' />
@@ -140,10 +137,17 @@ const ManagementCourse = () => {
                     </Form.Item>
                     <Form.Item>
                         <Button onClick={resetForm} className='h-12! bg-[#fa7833]! text-[white]! font-bold!'>
-                        <Trash2 size={16}/> Xóa tìm kiếm
+                            <Trash2 size={16}/> Xóa tìm kiếm
                         </Button>
                     </Form.Item>
                 </Form>
+
+                <Button
+                    className=' bg-[#fa7833]! text-[white]! h-12! font-bold!'
+                    onClick={handleCreateCourse}
+                >
+                    <Plus size={16}/>Tạo khóa học
+                </Button>
             </div>
 
             <div>

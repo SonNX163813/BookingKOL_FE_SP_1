@@ -11,6 +11,13 @@ export const API_PATHS = {
   },
   COURSE: {
     getAllCourse: "/v1/courses/all",
-    adminViewDetailCourse: "/v1/courses"
+    adminViewDetailCourse: "/v1/courses",
+    createCourse : "/v1/admin/course/create"
+  },
+  CATEGORY: {
+    getAllCategory : "/v1/categories",
+    getCategoryById: "/v1/categories",
+    createCategory : "/v1/categories",
+    deleteCategory : "/v1/categories"
   }
 };

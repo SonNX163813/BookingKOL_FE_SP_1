@@ -118,20 +118,12 @@ const ManagementKOL = () => {
             align: "center",
             render: (record) => (
                 <div className="w-full flex justify-center">
-                    <button
+                    <Button
                         onClick={() => handleViewDetail(record)}
-                        className="
-                        relative flex items-center justify-center gap-2
-                        px-4 py-2.5 rounded-xl
-                        bg-gradient-to-r from-blue-600 to-blue-400
-                        text-white font-medium shadow-md
-                        hover:from-blue-500 hover:to-blue-300
-                        hover:shadow-lg hover:scale-[1.05]
-                        active:scale-[0.97] transition-all duration-300 cursor-pointer
-                        "
+                        className="!h-10 !bg-blue-600 !text-white !border-none hover:!bg-blue-700 transition-all"
                     >
                         <Eye size={18} className="font-semibold" />
-                    </button>
+                    </Button>
                 </div>
             ),
         }
@@ -238,7 +230,7 @@ const ManagementKOL = () => {
                                         <Tag color="blue" key={cat.id}>{cat.name}</Tag>
                                     ))}
                                 </div>
-                                <p className="text-gray-600 font-medium">Giá booking tối thiểu: <span className="text-gray-900">{selectedKOL.minBookingPrice.toLocaleString("vi-VN")} đ</span></p>
+                                {/* <p className="text-gray-600 font-medium">Giá booking tối thiểu: <span className="text-gray-900">{selectedKOL.minBookingPrice.toLocaleString("vi-VN")} đ</span></p> */}
                                 <p className="text-gray-600 font-medium">Đánh giá: <Rate disabled value={selectedKOL.overallRating} /> ({selectedKOL.feedbackCount})</p>
                                 <p className="text-gray-600 font-medium">Trạng thái: <span className="text-gray-900">{selectedKOL.isAvailable ? "Sẵn sàng" : "Không hoạt động"}</span></p>
                             </div>

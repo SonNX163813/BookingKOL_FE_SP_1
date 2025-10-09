@@ -69,30 +69,22 @@ const ManagementLogAI = () => {
       render: (createdAt) => new Date(createdAt).toLocaleString("vi-VN"),
       width: "20%",
     },
-{
-  title: "Thao tác",
-  key: "action",
-  align: "center",
-  render: (record) => (
-    <div className="w-full flex justify-center">
-      <button
-        onClick={() => handleViewDetailLog(record)}
-        className="
-          relative flex items-center justify-center gap-2
-          px-4 py-2.5 rounded-xl
-          bg-gradient-to-r from-blue-600 to-blue-400
-          text-white font-medium shadow-md
-          hover:from-blue-500 hover:to-blue-300
-          hover:shadow-lg hover:scale-[1.05]
-          active:scale-[0.97] transition-all duration-300 cursor-pointer
-        "
-      >
-        <Eye size={18} className="font-semibold" />
-      </button>
-    </div>
-  ),
-  width: "12%",
-}
+    {
+      title: "Thao tác",
+      key: "action",
+      align: "center",
+      render: (record) => (
+        <div className="w-full flex justify-center">
+          <Button
+            onClick={() => handleViewDetailLog(record)}
+            className="!h-10 !bg-blue-600 !text-white !border-none hover:!bg-blue-700 transition-all"
+          >
+            <Eye size={18} className="font-semibold" />
+          </Button>
+        </div>
+      ),
+      width: "12%",
+    }
 
   ];
 

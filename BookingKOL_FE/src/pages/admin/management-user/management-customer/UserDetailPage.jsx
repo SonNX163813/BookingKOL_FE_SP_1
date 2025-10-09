@@ -44,7 +44,7 @@ export default function UserDetailPage() {
 
             <div className="flex items-center justify-between mb-4">
                 <Button
-                    onClick={() => navigate("/management-customer")}
+                    onClick={() => navigate("/admin/management-customer")}
               
                     className="rounded-xl !h-10 !flex !items-center"
                     type="default"

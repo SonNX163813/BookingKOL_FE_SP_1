@@ -8,20 +8,26 @@ import UserDetailPage from "../pages/admin/management-user/management-customer/U
 import ManagementKOL from "../pages/admin/management-user/management-kol/ManagementKOL";
 import ManagementCourse from "../pages/admin/course/ManagementCourse";
 import ViewDetailCourse from "../pages/admin/course/ViewDetailCOurse";
-
+import ManagementCategory from "../pages/admin/cate/ManagementCategory";
+import CreateCoursePage from "../pages/admin/course/CreateCoursePage";
 export const routerAdmin = [
   { path: "/login", element: <LoginPage /> },
 
   {
+    path : "/admin",
     element: <MainLayoutAdmin />,
     children: [
-      { path: "/admin", element: <DashBoard /> },
-      { path: "/management-log-chat-ai", element: <ManagementLogAI /> },
-      { path: "/management-customer", element: <ManagementCustomer/> },
-      { path: "/management-customer/:id", element: <UserDetailPage/> },
-      { path: "/management-kol", element: <ManagementKOL/> },
-      { path: "/management-course", element: <ManagementCourse/> },
-      { path: "/view-detail-course/:id", element: <ViewDetailCourse/> },
+      { index: true, element: <DashBoard /> },
+      { path: "management-log-chat-ai", element: <ManagementLogAI /> },
+      { path: "management-customer", element: <ManagementCustomer/> },
+      { path: "management-customer/:id", element: <UserDetailPage/> },
+      { path: "management-kol", element: <ManagementKOL/> },
+      { path: "management-course", element: <ManagementCourse/> },
+      { path: "view-detail-course/:id", element: <ViewDetailCourse/> },
+      { path: "management-category", element: <ManagementCategory/> },
+      { path: "create-course", element: <CreateCoursePage/> },
+
+    
     ],
   },
 

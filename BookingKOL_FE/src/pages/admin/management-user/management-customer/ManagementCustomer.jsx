@@ -1,5 +1,5 @@
 import { Search, Trash2, Eye, RefreshCcw, Loader2 } from "lucide-react";
-import { Button, Card, Form, Input, Modal, Pagination, Table } from "antd";
+import { Button, Card, Form, Input, Modal, Pagination, Spin, Table } from "antd";
 import { useState } from "react";
 import { useGetAllBrands } from "../../../../hook/admin/management-user/useGetAllBrands";
 import { AccountCircleOutlined } from "@mui/icons-material";
@@ -21,7 +21,8 @@ const ManagementCustomer = () => {
     const {
         isLoadingAdminUpdateStatusAccount,
         handleUpdateStatusAccount,
-        userId
+        userIdUpdate,
+        setUserIdUpdate
     } = usePatchAdminUpdateStatusAccount(refetchGetAllBrands)
 
 
@@ -38,6 +39,7 @@ const ManagementCustomer = () => {
     };
 
     const handleUpdateStatus = (value) => {
+        setUserIdUpdate(value.userId)
         const payload = {
             id: value.userId,
             status: "ACTIVE"
@@ -80,38 +82,21 @@ const ManagementCustomer = () => {
                 <div className="w-full flex justify-center gap-3">
 
                     <Button
-                        onClick={() => navigate(`/management-customer/${record.userId}`)}
-                        className="
-                        flex items-center justify-center gap-2
-                        !px-4 !py-2.5 !rounded-xl
-                        !bg-gradient-to-r from-blue-600 to-blue-400
-                        !text-white font-medium shadow-md
-                        hover:from-blue-500 hover:to-blue-300
-                        hover:shadow-lg hover:scale-[1.05]
-                        active:scale-[0.97] transition-all duration-300 cursor-pointer !h-10
-                        "
+                        onClick={() => navigate(`/admin/management-customer/${record.userId}`)}
+                        className="!h-10 !bg-blue-600 !text-white !border-none hover:!bg-blue-700 transition-all"
                     >
                         <Eye size={18} className="font-semibold" />
                     </Button>
 
                     <Button
                         onClick={() => handleUpdateStatus(record)}
-                        className="
-                        flex items-center justify-center gap-2
-                        !px-4 !py-2.5 !rounded-xl
-                        !bg-gradient-to-r from-green-600 to-green-400
-                        !text-white font-medium shadow-md
-                        hover:from-green-500 hover:to-green-300
-                        hover:shadow-lg hover:scale-[1.05]
-                        active:scale-[0.97] transition-all duration-300 cursor-pointer !h-10 
-                        "
+                        className="!h-10 !bg-green-600 !text-white !border-none hover:!bg-green-700 transition-all flex items-center justify-center"
                     >
-                        {isLoadingAdminUpdateStatusAccount && userId ===record.userId ? (
-                            <Loader2 size={18} className="font-semibold"/>
+                        {isLoadingAdminUpdateStatusAccount && userIdUpdate === record.userId ? (
+                            <Loader2 className="w-5 h-5 animate-spin" />
                         ) : (
                             <RefreshCcw size={18} className="font-semibold" />
                         )}
-                        
                     </Button>
                 </div>
             ),

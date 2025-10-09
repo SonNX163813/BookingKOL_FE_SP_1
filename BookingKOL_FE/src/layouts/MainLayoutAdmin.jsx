@@ -37,6 +37,8 @@ const MainLayoutAdmin = () => {
     { pattern: /^\/management\/orders(\/)?$/, key: "management-orders" },
     { pattern: /^\/management-kol(\/)?$/, key: "management-kol" },
     { pattern: /^\/management-customer(\/)?$/, key: "management-customer" },
+    { pattern: /^\/management-category(\/)?$/, key: "management-category" },
+    { pattern: /^\/management-course(\/)?$/, key: "management-course" },
   ];
 
   const getSelectedKey = (pathname) => {
@@ -51,7 +53,6 @@ const MainLayoutAdmin = () => {
 
   const toggleMenu = () => setCollapsed(!collapsed);
 
-  // 🧭 MENU CHA - MENU CON
   const menuItems = [
     {
       key: "admin",
@@ -66,12 +67,12 @@ const MainLayoutAdmin = () => {
         {
           key: "management-kol",
           icon: <VerifiedUserOutlined />,
-          label: <Link to="/management-kol">Quản lý KOL</Link>,
+          label: <Link to="management-kol">Quản lý KOL</Link>,
         },
         {
           key: "management-customer",
           icon: <AccountCircleOutlined />,
-          label: <Link to="/management-customer">Quản lý Khách hàng</Link>,
+          label: <Link to="management-customer">Quản lý Khách hàng</Link>,
         },
       ],
     },
@@ -83,8 +84,7 @@ const MainLayoutAdmin = () => {
         {
           key: "management-category",
           icon: <CategoryOutlined />,
-          // label: <Link to="/management-category">Quản lý lĩnh vực</Link>,
-          label: "Quản lý lĩnh vực"
+          label: <Link to="management-category">Quản lý lĩnh vực</Link>
         },
         {
           key: "management-abc",
@@ -102,7 +102,7 @@ const MainLayoutAdmin = () => {
         {
           key: "management-course",
           icon: <PlayCircleOutline />,
-          label: <Link to="/management-course">Khóa học</Link>,
+          label: <Link to="management-course">Khóa học</Link>,
         },
       ],
     },
@@ -128,7 +128,7 @@ const MainLayoutAdmin = () => {
         {
           key: "management-log-chat-ai",
           icon: <BarChartOutlined />,
-          label: <Link to="/management-log-chat-ai">Quản lý Log Chat AI</Link>,
+          label: <Link to="management-log-chat-ai">Quản lý Log Chat AI</Link>,
         },
       ],
     },

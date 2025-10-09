@@ -4,7 +4,7 @@ import { toast } from "react-toastify"
 import { useState } from "react"
 
 export const usePatchAdminUpdateStatusAccount = (onSuccessCallback) => {
-    const [userId, setUserId] = useState(undefined)
+    const [userIdUpdate, setUserIdUpdate] = useState(undefined)
     const {
         isPending: isLoadingAdminUpdateStatusAccount,
         mutateAsync: usePatchAdminUpdateStatusAcountMutation
@@ -12,16 +12,18 @@ export const usePatchAdminUpdateStatusAccount = (onSuccessCallback) => {
         mutationKey: ["usePatchAdminUpdateStatusAccount"],
         mutationFn: patchAdminUpdateStatusAccount,
         onError: (err) => {
+            console.log(err);
+            
             toast.error(err.message || "Có lỗi xảy ra vui lòng thử lại sau ít phút.")
         },
         onSuccess: () => {
             onSuccessCallback?.()
-            setUserId(undefined)
+            setUserIdUpdate(undefined)
+            toast.success("Thay đổi trạng thái thành công.")
         }
     })
 
     const handleUpdateStatusAccount = (value) => {
-        setUserId(value.userId)
         usePatchAdminUpdateStatusAcountMutation(value)
     }
 
@@ -29,6 +31,7 @@ export const usePatchAdminUpdateStatusAccount = (onSuccessCallback) => {
     return {
         isLoadingAdminUpdateStatusAccount,
         handleUpdateStatusAccount,
-        userId
+        userIdUpdate,
+        setUserIdUpdate
     }
 }

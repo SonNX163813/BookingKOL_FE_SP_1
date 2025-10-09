@@ -74,7 +74,7 @@ const ViewDetailCourse = () => {
                         <span>Thông tin cơ bản</span>
                         <div className="flex items-center justify-between">
                             <Button
-                                onClick={() => navigate("/management-course")}
+                                onClick={() => navigate("/admin/management-course")}
                         
                                 className="rounded-xl !h-10 !flex !items-center"
                                 type="default"
