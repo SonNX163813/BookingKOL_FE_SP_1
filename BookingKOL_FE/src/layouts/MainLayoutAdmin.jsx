@@ -32,7 +32,10 @@ const MainLayoutAdmin = () => {
   // Ánh xạ path → key
   const pathKeyMap = [
     { pattern: /^\/admin(\/)?$/, key: "admin" },
-    { pattern: /^\/management-log-chat-ai(\/)?$/, key: "management-log-chat-ai" },
+    {
+      pattern: /^\/management-log-chat-ai(\/)?$/,
+      key: "management-log-chat-ai",
+    },
     { pattern: /^\/management\/users(\/)?$/, key: "management-users" },
     { pattern: /^\/management\/orders(\/)?$/, key: "management-orders" },
     { pattern: /^\/management-kol(\/)?$/, key: "management-kol" },
@@ -84,7 +87,7 @@ const MainLayoutAdmin = () => {
         {
           key: "management-category",
           icon: <CategoryOutlined />,
-          label: <Link to="management-category">Quản lý lĩnh vực</Link>
+          label: <Link to="management-category">Quản lý lĩnh vực</Link>,
         },
         {
           key: "management-abc",
@@ -111,11 +114,10 @@ const MainLayoutAdmin = () => {
       icon: <FolderOutlined />,
       label: "Quản lý lịch sử",
       children: [
-        
         {
           key: "management-his",
           icon: <BarChartOutlined />,
-          label: "Quản lý lịch sử mua khóa học"
+          label: "Quản lý lịch sử mua khóa học",
         },
       ],
     },
@@ -124,7 +126,6 @@ const MainLayoutAdmin = () => {
       icon: <FolderOutlined />,
       label: "Quản lý hệ thống",
       children: [
-        
         {
           key: "management-log-chat-ai",
           icon: <BarChartOutlined />,
@@ -132,14 +133,12 @@ const MainLayoutAdmin = () => {
         },
       ],
     },
-    
+
     {
       key: "settings",
       icon: <SettingsOutlined />,
       label: "Cài đặt",
-      children: [
-
-      ],
+      children: [],
     },
   ];
 

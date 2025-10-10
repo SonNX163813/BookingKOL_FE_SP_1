@@ -10,7 +10,7 @@ export default function App() {
     <AuthProvider>
       <ToastContainer
         style={{ zIndex: 9999 }}
-        position='top-right'
+        position="top-right"
         autoClose={5000}
         rtl={false}
         limit={3}

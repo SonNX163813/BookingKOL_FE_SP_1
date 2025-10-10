@@ -10,8 +10,7 @@ export default defineConfig({
         target: "http://localhost:8080",
         changeOrigin: true,
         secure: false,
-        // fastRefresh: false, // ⟵ tắt Fast Refresh
-        rewrite: (p) => p.replace(/^\/api/, "/api"),
+        fastRefresh: false, // ⟵ tắt Fast Refresh
       },
     },
   },

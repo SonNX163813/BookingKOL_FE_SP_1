@@ -1,20 +1,43 @@
-import { Calendar, Eye, ListChecks, MessageSquare, Reply, Search, Trash2 } from "lucide-react";
-import { Button, Card, DatePicker, Form, Input, Modal, Pagination, Table } from "antd";
+import {
+  Calendar,
+  Eye,
+  ListChecks,
+  MessageSquare,
+  Reply,
+  Search,
+  Trash2,
+} from "lucide-react";
+import {
+  Button,
+  Card,
+  DatePicker,
+  Form,
+  Input,
+  Modal,
+  Pagination,
+  Table,
+} from "antd";
 import { useGetLogChatAI } from "../../../hook/ai/useGetLogChatAI";
 import { useState } from "react";
 import dayjs from "dayjs";
 const ManagementLogAI = () => {
-  const [page, setPage] = useState(0)
-  const [size, setSize] = useState(20)
+  const [page, setPage] = useState(0);
+  const [size, setSize] = useState(20);
   const [openViewDetailLog, setOpenViewDetailLog] = useState(false);
   const [selectedLog, setSelectedLog] = useState(null);
   const [form] = Form.useForm();
-  const [searchName, setSearchName] = useState(undefined)
+  const [searchName, setSearchName] = useState(undefined);
   const [searchStartDate, setSearchStartDate] = useState(undefined);
   const [searchEndDate, setSearchEndDate] = useState(undefined);
 
-  const { isLoadingGetLogChatAI, ResponseGetLogChatAI } = useGetLogChatAI(page, size, searchName, searchStartDate, searchEndDate);
-  const dataResponse = ResponseGetLogChatAI?.data?.content
+  const { isLoadingGetLogChatAI, ResponseGetLogChatAI } = useGetLogChatAI(
+    page,
+    size,
+    searchName,
+    searchStartDate,
+    searchEndDate
+  );
+  const dataResponse = ResponseGetLogChatAI?.data?.content;
 
   const handleViewDetailLog = (record) => {
     setSelectedLog(record);
@@ -23,15 +46,18 @@ const ManagementLogAI = () => {
 
   const handleSearch = (value) => {
     setSearchName(value.search);
-    const startTime = value.startDate ? dayjs(value.startDate).format("YYYY-MM-DD") : undefined;
-    const endTime = value.endDate ? dayjs(value.endDate).format("YYYY-MM-DD") : undefined;
+    const startTime = value.startDate
+      ? dayjs(value.startDate).format("YYYY-MM-DD")
+      : undefined;
+    const endTime = value.endDate
+      ? dayjs(value.endDate).format("YYYY-MM-DD")
+      : undefined;
     setSearchStartDate(startTime);
     setSearchEndDate(endTime);
-    setPage(0)
+    setPage(0);
   };
 
-  console.log(searchName,searchEndDate, searchStartDate);
-  
+  console.log(searchName, searchEndDate, searchStartDate);
 
   const resetForm = () => {
     form.resetFields();
@@ -44,7 +70,9 @@ const ManagementLogAI = () => {
     {
       title: "STT",
       key: "stt",
-      render: (_, __, index) => <div className="font-bold">#{page * size + index + 1}</div>,
+      render: (_, __, index) => (
+        <div className="font-bold">#{page * size + index + 1}</div>
+      ),
       width: "4%",
     },
     {
@@ -84,8 +112,7 @@ const ManagementLogAI = () => {
         </div>
       ),
       width: "12%",
-    }
-
+    },
   ];
 
   return (
@@ -100,25 +127,37 @@ const ManagementLogAI = () => {
         </section>
       </div>
 
-      <div className='flex gap-3 py-3'>
-        <Form form={form} className='flex gap-3' onFinish={handleSearch}>
-          <Form.Item name='search'>
-            <Input className='h-12!' placeholder='Tìm câu hỏi' />
+      <div className="flex gap-3 py-3">
+        <Form form={form} className="flex gap-3" onFinish={handleSearch}>
+          <Form.Item name="search">
+            <Input className="h-12!" placeholder="Tìm câu hỏi" />
           </Form.Item>
-          <Form.Item name='startDate'>
-            <DatePicker className='h-12!' placeholder='Tìm kiếm theo ngày bắt đầu' />
+          <Form.Item name="startDate">
+            <DatePicker
+              className="h-12!"
+              placeholder="Tìm kiếm theo ngày bắt đầu"
+            />
           </Form.Item>
-          <Form.Item name='endDate'>
-            <DatePicker className='h-12!' placeholder='Tìm kiếm theo ngày kết thúc' />
+          <Form.Item name="endDate">
+            <DatePicker
+              className="h-12!"
+              placeholder="Tìm kiếm theo ngày kết thúc"
+            />
           </Form.Item>
           <Form.Item>
-            <Button htmlType='submit' className='h-12! bg-[#fa7833]! text-[white]! font-bold!'>
+            <Button
+              htmlType="submit"
+              className="h-12! bg-[#fa7833]! text-[white]! font-bold!"
+            >
               <Search size={16} /> Tìm kiếm
             </Button>
           </Form.Item>
           <Form.Item>
-            <Button onClick={resetForm} className='h-12! bg-[#fa7833]! text-[white]! font-bold!'>
-              <Trash2 size={16}/> Xóa tìm kiếm
+            <Button
+              onClick={resetForm}
+              className="h-12! bg-[#fa7833]! text-[white]! font-bold!"
+            >
+              <Trash2 size={16} /> Xóa tìm kiếm
             </Button>
           </Form.Item>
         </Form>
@@ -134,13 +173,12 @@ const ManagementLogAI = () => {
         />
       </div>
 
-
-      <div className='!my-4 py-5'>
+      <div className="!my-4 py-5">
         <Pagination
-          align='center'
+          align="center"
           current={page + 1}
           pageSize={size}
-          pageSizeOptions={['5', '10', '20', '50', '100']}
+          pageSizeOptions={["5", "10", "20", "50", "100"]}
           onChange={(pageNumber, sizeNumber) => {
             setPage(pageNumber - 1), setSize(sizeNumber);
           }}

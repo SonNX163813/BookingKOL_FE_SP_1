@@ -1,10 +1,10 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 
-export const baseURL = "/api/";
+import { BASE_URL } from "../utils/config";
 
 export const api = axios.create({
-  baseURL,
+  baseURL: BASE_URL,
 });
 
 // Response interceptor
