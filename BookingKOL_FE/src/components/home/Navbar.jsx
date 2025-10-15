@@ -33,6 +33,7 @@ const navItems = [
     subItems: [
       { label: "Danh sách KOL", to: "/danh-sach-kol" },
       { label: "Danh sách khóa đào tạo livestream", to: "/danh-sach-khoa-hoc" },
+      { label: "Gói dịch vụ", to: "goi-dich-vu"}
     ],
   },
   { label: "Blog", to: "/blog" },
